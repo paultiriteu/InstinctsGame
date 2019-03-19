@@ -7,16 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AuthenticationViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get { return UIInterfaceOrientationMask.landscapeRight }
-    }
-    
+    private let realm: Realm
     private let repository: AppRepository
 
     @IBAction func buttonAction(_ sender: Any) {
@@ -27,9 +25,9 @@ class AuthenticationViewController: UIViewController {
     }
     
     init(repository: AppRepository) {
+        self.realm = try! Realm()
         self.repository = repository
         super.init(nibName: "AuthenticationViewController", bundle: Bundle(for: AuthenticationViewController.self))
-        super.loadViewIfNeeded()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,6 +37,11 @@ class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if realm.objects(User.self).count > 0 {
+            authorized()
+        }
+        
         configureUI()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -65,6 +68,6 @@ class AuthenticationViewController: UIViewController {
     }
     
     func authorized() {
-        repository.toBullsEyeGame()
+        repository.toLevelsView()
     }
 }

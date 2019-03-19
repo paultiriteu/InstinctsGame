@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LevelsViewController" customModule="Licenta" customModuleProvider="target">
             <connections>
+                <outlet property="easyDifficultyView" destination="veI-cI-kKf" id="AjS-SQ-351"/>
+                <outlet property="hardDifficultyView" destination="EAI-0t-elD" id="hhQ-8i-TCr"/>
+                <outlet property="mediumDifficultyView" destination="1WP-yu-xoW" id="UQD-Pf-QCg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,19 +23,33 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="139" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-En-D90">
-                    <rect key="frame" x="310.5" y="87.5" width="46" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="4CY-hW-ozE"/>
-                    </constraints>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-En-D90">
+                    <rect key="frame" x="35" y="50" width="597" height="275"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veI-cI-kKf" customClass="LevelDifficultyView" customModule="Licenta" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="185.5" height="275"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WP-yu-xoW" customClass="LevelDifficultyView" customModule="Licenta" customModuleProvider="target">
+                            <rect key="frame" x="205.5" y="0.0" width="186" height="275"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAI-0t-elD" customClass="LevelDifficultyView" customModule="Licenta" customModuleProvider="target">
+                            <rect key="frame" x="411.5" y="0.0" width="185.5" height="275"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.075163625180721283" green="0.18222939968109131" blue="0.28966248035430908" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="pQl-En-D90" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="HRn-OM-XZb"/>
-                <constraint firstItem="pQl-En-D90" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qlX-vn-Cn0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pQl-En-D90" secondAttribute="bottom" constant="50" id="3G9-pw-2RT"/>
+                <constraint firstItem="pQl-En-D90" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="SzS-Kn-XyN"/>
+                <constraint firstItem="pQl-En-D90" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="bFZ-VY-wet"/>
+                <constraint firstAttribute="trailing" secondItem="pQl-En-D90" secondAttribute="trailing" constant="35" id="mRE-Ve-ZYK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="85.907046476761622" y="132"/>
         </view>
     </objects>
 </document>

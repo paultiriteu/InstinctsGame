@@ -7,25 +7,39 @@
 //
 
 import Foundation
+import RealmSwift
 
 class AppRepository {
-    private var userNickname: String
+    private var userNickname: String?
     private let router: MainAppRouter
+    private var realm: Realm
     
-    init(nickname: String, router: MainAppRouter) {
+    init(router: MainAppRouter) {
         self.router = router
-        self.userNickname = nickname
+        realm = try! Realm()
     }
     
     func getNickname() -> String {
-        return userNickname
+        guard let name = userNickname else { return "" }
+        return name
     }
     
     func setNickname(nickname: String) {
         self.userNickname = nickname
+        
+        let user = User()
+        user.nickname = nickname
+        
+        try! realm.write {
+            realm.add(user)
+        }
     }
     
     func toBullsEyeGame() {
-        router.toBullsEyeGame(nickname: userNickname)
+        router.toBullsEyeGame(nickname: getNickname())
+    }
+    
+    func toLevelsView() {
+        router.toLevelsView(nickname: getNickname())
     }
 }

@@ -10,23 +10,34 @@ import Foundation
 import UIKit
 
 class MainAppRouter {
-    private let navController: UINavigationController
+    private var navController: UINavigationController?
     
-    init(navigationController: UINavigationController) {
-        self.navController = navigationController
+    init() {
+        
+    }
+    
+    func getStartScreen() -> UINavigationController {
+        let repository = AppRepository(router: self)
+        let vc = AuthenticationViewController(repository: repository)
+        self.navController = UINavigationController(rootViewController: vc)
+        navController?.setNavigationBarHidden(true, animated: true)
+        
+        return navController!
     }
     
     func toBullsEyeGame(nickname: String) {
-        let repository = AppRepository(nickname: nickname, router: self)
+        let repository = AppRepository(router: self)
         let vc = BullsEyeViewController(repository: repository)
-        navController.pushViewController(vc, animated: true)
+        navController!.pushViewController(vc, animated: true)
+    }
+    
+    func toLevelsView(nickname: String) {
+        let repository = AppRepository(router: self)
+        let vc = LevelsViewController(repository: repository)
+        navController!.pushViewController(vc, animated: true)
     }
     
     func popViewController() {
         
     }
-//    func toAuthenticationScreen(navigationController: UINavigationController) {
-//        let vc = AuthenticationViewController()
-//        navigationController.pushViewController(vc, animated: true)
-//    }
 }

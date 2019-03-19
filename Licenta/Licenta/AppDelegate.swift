@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navController = UINavigationController()
-        let router = MainAppRouter(navigationController: navController)
-        let repository = AppRepository(nickname: "", router: router)
-        let vc = AuthenticationViewController(repository: repository)
-        window?.rootViewController = vc
+        let router = MainAppRouter()
+        window?.rootViewController = router.getStartScreen()
         window?.makeKeyAndVisible()
         return true
     }
@@ -47,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.landscapeRight
+    }
 }
 
