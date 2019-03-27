@@ -9,8 +9,25 @@
 import UIKit
 
 class BullsEyeViewController: UIViewController {
-    @IBOutlet weak var label: UILabel!
+//    @IBOutlet weak var slider: UISlider!
+//    @IBOutlet weak var targetLabel: UILabel!
+//    @IBOutlet weak var scoreLabel: UILabel!
+//    @IBOutlet weak var roundLabel: UILabel!
+//    @IBOutlet weak var levelLabel: UILabel!
+    //    @IBOutlet weak var targetScoreLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var targetScoreLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var targetLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var roundLabel: UILabel!
+    @IBOutlet weak var targetTextLabel: UILabel!
     
+    private var currentValue = 0
+    private var targetValue = 0
+    private var score = 0
+    private var roundsLeft = 0
+    private var level = 1
     private let repository: AppRepository
     
     init(repository: AppRepository) {
@@ -24,6 +41,196 @@ class BullsEyeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = repository.getNickname()
+        let roundedValue = slider.value.rounded()
+        currentValue = Int(roundedValue)
+        self.startNewGame()
+    }
+    
+    @IBAction func sliderAction(_ sender: Any) {
+        print("\(slider.value)")
+        let roundedValue = slider.value.rounded()
+        currentValue = Int(roundedValue)
+    }
+    
+    @IBAction func hitMeAction(_ sender: Any) {
+        let difference = abs(targetValue - currentValue)
+        var points = 100 - difference
+        
+        let title: String
+        if difference == 0 {
+            title = "Perfect!"
+            points += 100
+        } else if difference < 5 {
+            title = "You almost had it!"
+            if difference == 1 {
+                points += 50
+            }
+        } else if difference < 10 {
+            title = "Pretty good!"
+        } else {
+            title = "Not even close!"
+        }
+        
+        score += points
+        
+        let message = "\nYou scored \(points) points"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: {
+            action in
+            self.startNewRound()
+        })
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func startOverAction(_ sender: Any) {
+        startNewGame()
+    }
+    
+    func startNewGame() {
+        score = 0
+        roundsLeft = 10
+        startNewRound()
+    }
+    
+    func updateLevel() {
+        switch level {
+//        case 1:
+//            if score >= 700 {
+//                level += 1
+//                levelPassedAlert()
+//                updateLabels()
+//                break
+//            } else {
+//                lostAlert()
+//            }
+        case 1:
+            if score >= 1000 {
+                level += 1
+                levelPassedAlert()
+                updateLabels()
+                break
+            } else {
+                lostAlert()
+            }
+        case 2:
+            if score >= 1300 {
+                level += 1
+                levelPassedAlert()
+                updateLabels()
+                break
+            } else {
+                lostAlert()
+            }
+        case 3:
+            if score >= 1600 {
+                level += 1
+                levelPassedAlert()
+                updateLabels()
+                break
+            } else {
+                lostAlert()
+            }
+        case 4:
+            if score >= 2000 {
+                showWinnerAlert()
+                updateLabels()
+                break
+            } else {
+                lostAlert()
+            }
+            
+        default: break
+        }
+    }
+    
+    func startNewRound() {
+        targetValue = Int.random(in: 1...100)
+        currentValue = 50
+        slider.value = Float(currentValue)
+        
+        if roundsLeft == 0 {
+            updateLevel()
+            score = 0
+            roundsLeft = 10
+        }
+        
+        updateLabels()
+        roundsLeft -= 1
+    }
+    
+    func updateLabels() {
+        var target: Int = 0
+        
+        switch level {
+//        case 1:
+//            target = 700
+//            break
+        case 1:
+            target = 1000
+            break
+        case 2:
+            target = 1300
+            break
+        case 3:
+            target = 1600
+            break
+        case 4:
+            target = 2000
+            break
+        default:
+            break
+        }
+        
+        targetLabel.text = String(format: "Move the slider as close as you can to %d points!", targetValue)
+        scoreLabel.text = String(format: "Score: %d", score)
+        roundLabel.text = String(format: "Rouds left: %d", roundsLeft)
+        levelLabel.text = "Level \(String(level))"
+        targetScoreLabel.text = "Target score: \(target)"
+    }
+    
+    func showWinnerAlert() {
+        let message = "YOU WON THE GAME!"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: {
+            action in
+            self.level = 1
+            self.score = 0
+            self.roundsLeft = 10
+            self.startNewRound()
+        })
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func lostAlert() {
+        let message = "You didn't get enough points..."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Start over", style: .default, handler: {
+            action in
+            self.level = 1
+            self.score = 0
+            self.roundsLeft = 10
+            self.startNewRound()
+        })
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func levelPassedAlert() {
+        let message = "You passed level \(level-1)!"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Next level", style: .default)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
