@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapViewController" customModule="Licenta" customModuleProvider="target">
+            <connections>
+                <outlet property="helperButton" destination="kaO-wr-DW5" id="ZjS-Hm-5RR"/>
+                <outlet property="mainLabel" destination="K0U-6Y-6zY" id="lPj-fe-3gi"/>
+                <outlet property="mainView" destination="AJO-jO-ahT" id="clB-NR-1og"/>
+                <outlet property="titleLabel" destination="46U-UD-KXH" id="340-EX-cF4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46U-UD-KXH">
+                    <rect key="frame" x="312.5" y="30" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJO-jO-ahT">
+                    <rect key="frame" x="283.5" y="121" width="100" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0U-6Y-6zY">
+                            <rect key="frame" x="29" y="39.5" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="g9o-Z7-ia0"/>
+                        <constraint firstItem="K0U-6Y-6zY" firstAttribute="centerX" secondItem="AJO-jO-ahT" secondAttribute="centerX" id="qit-eF-YgF"/>
+                        <constraint firstAttribute="width" constant="100" id="r7L-lp-UL1"/>
+                        <constraint firstItem="K0U-6Y-6zY" firstAttribute="centerY" secondItem="AJO-jO-ahT" secondAttribute="centerY" id="tFa-XG-0jF"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaO-wr-DW5">
+                    <rect key="frame" x="310.5" y="305" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="helperButtonAction:" destination="-1" eventType="touchUpInside" id="YX3-lZ-zDn"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="AJO-jO-ahT" firstAttribute="top" secondItem="46U-UD-KXH" secondAttribute="bottom" constant="70" id="FMw-QM-UOi"/>
+                <constraint firstItem="kaO-wr-DW5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UOP-oi-MP1"/>
+                <constraint firstItem="46U-UD-KXH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="VYF-RP-4DI"/>
+                <constraint firstItem="46U-UD-KXH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Wk3-R0-jvG"/>
+                <constraint firstItem="AJO-jO-ahT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eQB-Om-TGy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kaO-wr-DW5" secondAttribute="bottom" constant="40" id="xfy-UO-fc0"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

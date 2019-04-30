@@ -35,8 +35,12 @@ class AppRepository {
         }
     }
     
-    func toBullsEyeGame() {
-        router.toBullsEyeGame(nickname: getNickname())
+    func toBullsEyeGame(difficulty: Int) {
+        router.toBullsEyeGame(nickname: getNickname(), difficulty: difficulty)
+    }
+    
+    func toTimerGame(difficulty: Int) {
+        router.toTimerGame(nickname: getNickname(), difficulty: difficulty)
     }
     
     func toLevelsView() {

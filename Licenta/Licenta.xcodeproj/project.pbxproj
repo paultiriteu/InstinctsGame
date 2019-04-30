@@ -23,6 +23,8 @@
 		3CD4B4D52228103400327712 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4B4D32228103400327712 /* AuthenticationViewController.swift */; };
 		3CD4B4D62228103400327712 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CD4B4D42228103400327712 /* AuthenticationViewController.xib */; };
 		3CD4B4D8222810C500327712 /* MainAppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4B4D7222810C500327712 /* MainAppRouter.swift */; };
+		DA1E782C226F7853008A1CEA /* TapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E782A226F7853008A1CEA /* TapViewController.swift */; };
+		DA1E782D226F7853008A1CEA /* TapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1E782B226F7853008A1CEA /* TapViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		932C2D92426A2D2A28AB27C0 /* Pods_Licenta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Licenta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDCD248E12FB1B9257C42230 /* Pods-Licenta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Licenta.debug.xcconfig"; path = "Target Support Files/Pods-Licenta/Pods-Licenta.debug.xcconfig"; sourceTree = "<group>"; };
 		C42DD40522941BD446B8D2BB /* Pods-Licenta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Licenta.release.xcconfig"; path = "Target Support Files/Pods-Licenta/Pods-Licenta.release.xcconfig"; sourceTree = "<group>"; };
+		DA1E782A226F7853008A1CEA /* TapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewController.swift; sourceTree = "<group>"; };
+		DA1E782B226F7853008A1CEA /* TapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +86,8 @@
 			children = (
 				3CB5D41E22395C6D005E4130 /* LevelsViewController.swift */,
 				3CB5D41F22395C6D005E4130 /* LevelsViewController.xib */,
-				3CB5D42222395CF9005E4130 /* LevelDifficultyView.xib */,
 				3CB5D42422395D03005E4130 /* LevelDifficultyView.swift */,
+				3CB5D42222395CF9005E4130 /* LevelDifficultyView.xib */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -99,6 +103,7 @@
 		3CD4B4B022280FDD00327712 = {
 			isa = PBXGroup;
 			children = (
+				DA1E7829226F782B008A1CEA /* TapInTime */,
 				3CAE07232241502700B5E4F4 /* ModelsForRealm */,
 				3CB5D41D22395C5D005E4130 /* Levels */,
 				3C89EAF92230304500D5AE39 /* Bull's Eye */,
@@ -156,6 +161,15 @@
 				932C2D92426A2D2A28AB27C0 /* Pods_Licenta.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA1E7829226F782B008A1CEA /* TapInTime */ = {
+			isa = PBXGroup;
+			children = (
+				DA1E782A226F7853008A1CEA /* TapViewController.swift */,
+				DA1E782B226F7853008A1CEA /* TapViewController.xib */,
+			);
+			path = TapInTime;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +236,7 @@
 				3CD4B4D62228103400327712 /* AuthenticationViewController.xib in Resources */,
 				3CD4B4C422280FDF00327712 /* Assets.xcassets in Resources */,
 				3CB5D42322395CF9005E4130 /* LevelDifficultyView.xib in Resources */,
+				DA1E782D226F7853008A1CEA /* TapViewController.xib in Resources */,
 				3CB5D42122395C6D005E4130 /* LevelsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +307,7 @@
 				3C89EAF822302E0100D5AE39 /* AppRepository.swift in Sources */,
 				3C89EAFC2230305400D5AE39 /* BullsEyeViewController.swift in Sources */,
 				3CAE07252241503400B5E4F4 /* Nickname.swift in Sources */,
+				DA1E782C226F7853008A1CEA /* TapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G2ZW4PZYN5;
+				DEVELOPMENT_TEAM = 95VDGC3DY2;
 				INFOPLIST_FILE = Licenta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -442,7 +458,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G2ZW4PZYN5;
+				DEVELOPMENT_TEAM = 95VDGC3DY2;
 				INFOPLIST_FILE = Licenta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -67,7 +67,8 @@ class LevelsViewController: UIViewController {
     }
     
     @objc func tappedOnEasy() {
-        repository.toBullsEyeGame()
+        repository.toTimerGame(difficulty: 1)
+//        repository.toBullsEyeGame()
     }
     
     @objc func tappedOnMedium() {
