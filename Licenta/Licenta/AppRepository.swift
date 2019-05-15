@@ -14,6 +14,8 @@ class AppRepository {
     private let router: MainAppRouter
     private var realm: Realm
     
+    let numberOfGames = 3
+    
     init(router: MainAppRouter) {
         self.router = router
         realm = try! Realm()
@@ -29,7 +31,6 @@ class AppRepository {
         
         let user = User()
         user.nickname = nickname
-//        user.difficultiesCompleted.append(IntObject(value: 0))
         user.difficultiesCompleted.append(0)
         user.lastDifficultyCompletedGames.append(0)
         
@@ -67,6 +68,29 @@ class AppRepository {
                     try! realm.write {
                         user?.lastDifficultyCompletedGames.append(gameId)
                     }
+                }
+            }
+        }
+        startRandomGame(difficulty: difficulty)
+    }
+    
+    func startRandomGame(difficulty: Int) {
+        if realm.objects(User.self).count > 0 {
+            let user = realm.objects(User.self).first
+            
+            if (user?.lastDifficultyCompletedGames.count)! < 3 {
+                let finishedGames = Array(user!.lastDifficultyCompletedGames)
+                var nextGameId = 0
+                
+                while finishedGames.contains(nextGameId) {
+                    nextGameId = Int.random(in: 1...numberOfGames)
+                }
+                
+                switch nextGameId {
+                case 1: router.toBullsEyeGame(nickname: user!.nickname, difficulty: difficulty)
+                case 2: router.toTimerGame(nickname: user!.nickname, difficulty: difficulty)
+                case 3: break
+                default: break
                 }
             }
         }
