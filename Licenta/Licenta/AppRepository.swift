@@ -29,6 +29,9 @@ class AppRepository {
         
         let user = User()
         user.nickname = nickname
+//        user.difficultiesCompleted.append(IntObject(value: 0))
+        user.difficultiesCompleted.append(0)
+        user.lastDifficultyCompletedGames.append(0)
         
         try! realm.write {
             realm.add(user)
@@ -45,5 +48,41 @@ class AppRepository {
     
     func toLevelsView() {
         router.toLevelsView(nickname: getNickname())
+    }
+    
+    func finishedTimerGame(for difficulty: Int) {
+        let game = Game()
+        game.id = GamesIds.Timer.getId()
+        game.name = GamesIds.Timer.rawValue
+        
+        userFinishedGame(gameId: game.id, difficulty: difficulty)
+    }
+    
+    func userFinishedGame(gameId: Int, difficulty: Int) {
+        if realm.objects(User.self).count > 0 {
+            let user = realm.objects(User.self).first
+            
+            if (user?.lastDifficultyCompletedGames.count)! < 3 {
+                if user?.lastDifficultyCompletedGames.contains(gameId) == false {
+                    try! realm.write {
+                        user?.lastDifficultyCompletedGames.append(gameId)
+                    }
+                }
+            }
+        }
+    }
+}
+
+enum GamesIds: String {
+    case BullsEye = "BullsEye"
+    case Timer = "Timer"
+    
+    func getId() -> Int {
+        switch self {
+        case .BullsEye:
+            return 1
+        case .Timer:
+            return 2
+        }
     }
 }

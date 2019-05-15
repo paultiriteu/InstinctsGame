@@ -8,7 +8,14 @@
 
 import Foundation
 import RealmSwift
+import Realm
 
 class User: Object {
     @objc dynamic var nickname: String = ""
+    var difficultiesCompleted = List<Int>()
+    var lastDifficultyCompletedGames = List<Int>()
 }
+
+//class IntObject: Object {
+//    dynamic var value: Int = 0
+//}

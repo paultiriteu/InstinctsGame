@@ -11,7 +11,7 @@
 		3C89EAF822302E0100D5AE39 /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89EAF722302E0100D5AE39 /* AppRepository.swift */; };
 		3C89EAFC2230305400D5AE39 /* BullsEyeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89EAFA2230305400D5AE39 /* BullsEyeViewController.swift */; };
 		3C89EAFD2230305400D5AE39 /* BullsEyeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C89EAFB2230305400D5AE39 /* BullsEyeViewController.xib */; };
-		3CAE07252241503400B5E4F4 /* Nickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE07242241503400B5E4F4 /* Nickname.swift */; };
+		3CAE07252241503400B5E4F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE07242241503400B5E4F4 /* User.swift */; };
 		3CB5D42022395C6D005E4130 /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5D41E22395C6D005E4130 /* LevelsViewController.swift */; };
 		3CB5D42122395C6D005E4130 /* LevelsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB5D41F22395C6D005E4130 /* LevelsViewController.xib */; };
 		3CB5D42322395CF9005E4130 /* LevelDifficultyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB5D42222395CF9005E4130 /* LevelDifficultyView.xib */; };
@@ -25,13 +25,16 @@
 		3CD4B4D8222810C500327712 /* MainAppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4B4D7222810C500327712 /* MainAppRouter.swift */; };
 		DA1E782C226F7853008A1CEA /* TapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E782A226F7853008A1CEA /* TapViewController.swift */; };
 		DA1E782D226F7853008A1CEA /* TapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1E782B226F7853008A1CEA /* TapViewController.xib */; };
+		DA9062762286E10600E05E64 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9062752286E10600E05E64 /* Game.swift */; };
+		DAA8FEDA2286D844009BCE04 /* FinishedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA8FED92286D844009BCE04 /* FinishedGameView.swift */; };
+		DAA8FEDC2286D862009BCE04 /* FinishedGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAA8FEDB2286D862009BCE04 /* FinishedGameView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3C89EAF722302E0100D5AE39 /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		3C89EAFA2230305400D5AE39 /* BullsEyeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeViewController.swift; sourceTree = "<group>"; };
 		3C89EAFB2230305400D5AE39 /* BullsEyeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BullsEyeViewController.xib; sourceTree = "<group>"; };
-		3CAE07242241503400B5E4F4 /* Nickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nickname.swift; sourceTree = "<group>"; };
+		3CAE07242241503400B5E4F4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3CB5D41E22395C6D005E4130 /* LevelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewController.swift; sourceTree = "<group>"; };
 		3CB5D41F22395C6D005E4130 /* LevelsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelsViewController.xib; sourceTree = "<group>"; };
 		3CB5D42222395CF9005E4130 /* LevelDifficultyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelDifficultyView.xib; sourceTree = "<group>"; };
@@ -50,6 +53,9 @@
 		C42DD40522941BD446B8D2BB /* Pods-Licenta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Licenta.release.xcconfig"; path = "Target Support Files/Pods-Licenta/Pods-Licenta.release.xcconfig"; sourceTree = "<group>"; };
 		DA1E782A226F7853008A1CEA /* TapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewController.swift; sourceTree = "<group>"; };
 		DA1E782B226F7853008A1CEA /* TapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapViewController.xib; sourceTree = "<group>"; };
+		DA9062752286E10600E05E64 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		DAA8FED92286D844009BCE04 /* FinishedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGameView.swift; sourceTree = "<group>"; };
+		DAA8FEDB2286D862009BCE04 /* FinishedGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinishedGameView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +82,8 @@
 		3CAE07232241502700B5E4F4 /* ModelsForRealm */ = {
 			isa = PBXGroup;
 			children = (
-				3CAE07242241503400B5E4F4 /* Nickname.swift */,
+				3CAE07242241503400B5E4F4 /* User.swift */,
+				DA9062752286E10600E05E64 /* Game.swift */,
 			);
 			path = ModelsForRealm;
 			sourceTree = "<group>";
@@ -103,6 +110,7 @@
 		3CD4B4B022280FDD00327712 = {
 			isa = PBXGroup;
 			children = (
+				DAA8FED82286D821009BCE04 /* Views */,
 				DA1E7829226F782B008A1CEA /* TapInTime */,
 				3CAE07232241502700B5E4F4 /* ModelsForRealm */,
 				3CB5D41D22395C5D005E4130 /* Levels */,
@@ -172,6 +180,15 @@
 			path = TapInTime;
 			sourceTree = "<group>";
 		};
+		DAA8FED82286D821009BCE04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DAA8FED92286D844009BCE04 /* FinishedGameView.swift */,
+				DAA8FEDB2286D862009BCE04 /* FinishedGameView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -238,6 +255,7 @@
 				3CB5D42322395CF9005E4130 /* LevelDifficultyView.xib in Resources */,
 				DA1E782D226F7853008A1CEA /* TapViewController.xib in Resources */,
 				3CB5D42122395C6D005E4130 /* LevelsViewController.xib in Resources */,
+				DAA8FEDC2286D862009BCE04 /* FinishedGameView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,13 +318,15 @@
 				3CD4B4BF22280FDD00327712 /* ViewController.swift in Sources */,
 				3CD4B4D8222810C500327712 /* MainAppRouter.swift in Sources */,
 				3CB5D42522395D03005E4130 /* LevelDifficultyView.swift in Sources */,
+				DA9062762286E10600E05E64 /* Game.swift in Sources */,
 				3CB5D42922395D54005E4130 /* CustomView.swift in Sources */,
+				DAA8FEDA2286D844009BCE04 /* FinishedGameView.swift in Sources */,
 				3CD4B4D52228103400327712 /* AuthenticationViewController.swift in Sources */,
 				3CD4B4BD22280FDD00327712 /* AppDelegate.swift in Sources */,
 				3CB5D42022395C6D005E4130 /* LevelsViewController.swift in Sources */,
 				3C89EAF822302E0100D5AE39 /* AppRepository.swift in Sources */,
 				3C89EAFC2230305400D5AE39 /* BullsEyeViewController.swift in Sources */,
-				3CAE07252241503400B5E4F4 /* Nickname.swift in Sources */,
+				3CAE07252241503400B5E4F4 /* User.swift in Sources */,
 				DA1E782C226F7853008A1CEA /* TapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

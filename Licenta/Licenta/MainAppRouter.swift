@@ -27,12 +27,13 @@ class MainAppRouter {
     
     func toBullsEyeGame(nickname: String, difficulty: Int) {
         let repository = AppRepository(router: self)
-        let vc = BullsEyeViewController(repository: repository)
+        let vc = BullsEyeViewController(repository: repository, difficulty: difficulty)
         navController!.pushViewController(vc, animated: true)
     }
     
     func toTimerGame(nickname: String, difficulty: Int) {
-        let vc = TapViewController(difficulty: difficulty)
+        let repository = AppRepository(router: self)
+        let vc = TapViewController(repository: repository, difficulty: difficulty)
         navController?.pushViewController(vc, animated: true)
     }
     
@@ -43,6 +44,6 @@ class MainAppRouter {
     }
     
     func popViewController() {
-        
+        navController?.popViewController(animated: true)
     }
 }

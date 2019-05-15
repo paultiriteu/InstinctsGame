@@ -9,12 +9,6 @@
 import UIKit
 
 class BullsEyeViewController: UIViewController {
-//    @IBOutlet weak var slider: UISlider!
-//    @IBOutlet weak var targetLabel: UILabel!
-//    @IBOutlet weak var scoreLabel: UILabel!
-//    @IBOutlet weak var roundLabel: UILabel!
-//    @IBOutlet weak var levelLabel: UILabel!
-    //    @IBOutlet weak var targetScoreLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var targetScoreLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
@@ -27,10 +21,11 @@ class BullsEyeViewController: UIViewController {
     private var targetValue = 0
     private var score = 0
     private var roundsLeft = 0
-    private var level = 1
+    private var level = 0
     private let repository: AppRepository
     
-    init(repository: AppRepository) {
+    init(repository: AppRepository, difficulty: Int) {
+        self.level = difficulty
         self.repository = repository
         super.init(nibName: "BullsEyeViewController", bundle: Bundle(for: BullsEyeViewController.self))
     }
@@ -98,15 +93,6 @@ class BullsEyeViewController: UIViewController {
     
     func updateLevel() {
         switch level {
-//        case 1:
-//            if score >= 700 {
-//                level += 1
-//                levelPassedAlert()
-//                updateLabels()
-//                break
-//            } else {
-//                lostAlert()
-//            }
         case 1:
             if score >= 1000 {
                 level += 1
@@ -129,14 +115,6 @@ class BullsEyeViewController: UIViewController {
             if score >= 1600 {
                 level += 1
                 levelPassedAlert()
-                updateLabels()
-                break
-            } else {
-                lostAlert()
-            }
-        case 4:
-            if score >= 2000 {
-                showWinnerAlert()
                 updateLabels()
                 break
             } else {
@@ -166,9 +144,6 @@ class BullsEyeViewController: UIViewController {
         var target: Int = 0
         
         switch level {
-//        case 1:
-//            target = 700
-//            break
         case 1:
             target = 1000
             break
@@ -177,9 +152,6 @@ class BullsEyeViewController: UIViewController {
             break
         case 3:
             target = 1600
-            break
-        case 4:
-            target = 2000
             break
         default:
             break
@@ -193,7 +165,7 @@ class BullsEyeViewController: UIViewController {
     }
     
     func showWinnerAlert() {
-        let message = "YOU WON THE GAME!"
+        let message = "YOU WON THE BULL'S EYE GAME!"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: {
             action in
@@ -227,7 +199,7 @@ class BullsEyeViewController: UIViewController {
     func levelPassedAlert() {
         let message = "You passed level \(level-1)!"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Next level", style: .default)
+        let action = UIAlertAction(title: "Awesome!", style: .default)
         
         alert.addAction(action)
         
