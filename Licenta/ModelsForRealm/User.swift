@@ -14,6 +14,7 @@ class User: Object {
     @objc dynamic var nickname: String = ""
     var difficultiesCompleted = List<Int>()
     var lastDifficultyCompletedGames = List<Int>()
+    @objc dynamic var totalScore: Int = 0
 }
 
 //class IntObject: Object {

@@ -51,34 +51,44 @@ class AppRepository {
         router.toLevelsView(nickname: getNickname())
     }
     
-    func finishedTimerGame(for difficulty: Int) {
+    func finishedTimerGame(for difficulty: Int, with score: Int) {
         let game = Game()
         game.id = GamesIds.Timer.getId()
         game.name = GamesIds.Timer.rawValue
         
-        userFinishedGame(gameId: game.id, difficulty: difficulty)
+        userFinishedGame(gameId: game.id, difficulty: difficulty, with: score)
     }
     
-    func userFinishedGame(gameId: Int, difficulty: Int) {
+    func finishedBullsEyeGame(for difficulty: Int, with score: Int) {
+        let game = Game()
+        game.id = GamesIds.BullsEye.getId()
+        game.name = GamesIds.BullsEye.rawValue
+        
+        userFinishedGame(gameId: game.id, difficulty: difficulty, with: score)
+    }
+    
+    func userFinishedGame(gameId: Int, difficulty: Int, with score: Int) {
         if realm.objects(User.self).count > 0 {
             let user = realm.objects(User.self).first
+            let totalScore = user!.totalScore + score
             
             if (user?.lastDifficultyCompletedGames.count)! < 3 {
                 if user?.lastDifficultyCompletedGames.contains(gameId) == false {
                     try! realm.write {
                         user?.lastDifficultyCompletedGames.append(gameId)
+                        user?.totalScore = totalScore
+                        print(user?.totalScore)
                     }
                 }
             }
         }
-        startRandomGame(difficulty: difficulty)
     }
     
     func startRandomGame(difficulty: Int) {
         if realm.objects(User.self).count > 0 {
             let user = realm.objects(User.self).first
             
-            if (user?.lastDifficultyCompletedGames.count)! < 3 {
+            if (user?.lastDifficultyCompletedGames.count)! < 4 {
                 let finishedGames = Array(user!.lastDifficultyCompletedGames)
                 var nextGameId = 0
                 
@@ -86,14 +96,26 @@ class AppRepository {
                     nextGameId = Int.random(in: 1...numberOfGames)
                 }
                 
+//                nextGameId = 2
+                
                 switch nextGameId {
                 case 1: router.toBullsEyeGame(nickname: user!.nickname, difficulty: difficulty)
                 case 2: router.toTimerGame(nickname: user!.nickname, difficulty: difficulty)
-                case 3: break
+                case 3: toLevelsView()
                 default: break
                 }
             }
         }
+    }
+    
+    func getScore() -> Int {
+        if realm.objects(User.self).count > 0 {
+            let user = realm.objects(User.self).first
+            
+            return user!.totalScore
+        }
+        
+        return 0
     }
 }
 

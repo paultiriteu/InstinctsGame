@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TapViewController: UIViewController {
+class TimerViewController: UIViewController {
     @IBOutlet weak var finishedGameView: FinishedGameView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainView: UIView!
@@ -25,9 +25,13 @@ class TapViewController: UIViewController {
     private var target: Int = 0
     private var range: Int = 0
     private var difficulty: Int
-    private var score: Int = 0
+    private var score: Int = 101
     private var round: Int = 0
     private var hasTimerStarted: Bool = false
+    
+    @IBAction func back(_ sender: Any) {
+        repository.toLevelsView()
+    }
     
     @IBAction func nextRoundButtonAction(_ sender: Any) {
         hasTimerStarted = false
@@ -40,7 +44,7 @@ class TapViewController: UIViewController {
     init(repository: AppRepository, difficulty: Int) {
         self.repository = repository
         self.difficulty = difficulty
-        super.init(nibName: "TapViewController", bundle: Bundle(for: TapViewController.self))
+        super.init(nibName: "TimerViewController", bundle: Bundle(for: TimerViewController.self))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,9 +81,9 @@ class TapViewController: UIViewController {
         roundsLabel.text = "Rounds left: \(5 - round)"
         
         nextRoundButton.setTitle("Next round", for: .normal)
-        nextRoundButton.isHidden = true        
+        nextRoundButton.isHidden = true
         
-        self.round = 1
+        self.round = 5
     }
     
     @objc func viewWasTapped() {
@@ -220,6 +224,7 @@ class TapViewController: UIViewController {
         if round == 5 {
             if score >= 100 {
                 finishedGameView.isHidden = false
+                repository.finishedTimerGame(for: difficulty, with: score)
             } else {
                 print("You lost!")
             }
@@ -227,8 +232,8 @@ class TapViewController: UIViewController {
     }
 }
 
-extension TapViewController: FinishedGameDelegate {
+extension TimerViewController: FinishedGameDelegate {
     func finishedGame() {
-        repository.finishedTimerGame(for: difficulty)
+        repository.startRandomGame(difficulty: difficulty)
     }
 }

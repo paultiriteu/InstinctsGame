@@ -25,6 +25,12 @@ class MainAppRouter {
         return navController!
     }
     
+    func toSquaresGame(nickname: String, difficulty: Int) {
+        let repository = AppRepository(router: self)
+        let vc = SquaresViewController(repository: repository, difficulty: difficulty)
+        navController?.pushViewController(vc, animated: true)
+    }
+    
     func toBullsEyeGame(nickname: String, difficulty: Int) {
         let repository = AppRepository(router: self)
         let vc = BullsEyeViewController(repository: repository, difficulty: difficulty)
@@ -33,7 +39,7 @@ class MainAppRouter {
     
     func toTimerGame(nickname: String, difficulty: Int) {
         let repository = AppRepository(router: self)
-        let vc = TapViewController(repository: repository, difficulty: difficulty)
+        let vc = TimerViewController(repository: repository, difficulty: difficulty)
         navController?.pushViewController(vc, animated: true)
     }
     

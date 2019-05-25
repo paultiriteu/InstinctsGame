@@ -12,6 +12,7 @@ class LevelsViewController: UIViewController {
     @IBOutlet weak var easyDifficultyView: LevelDifficultyView!
     @IBOutlet weak var mediumDifficultyView: LevelDifficultyView!
     @IBOutlet weak var hardDifficultyView: LevelDifficultyView!
+    @IBOutlet weak var scoreLabel: UILabel!
 
     private let repository: AppRepository
     
@@ -35,6 +36,8 @@ class LevelsViewController: UIViewController {
     
     func configureUI() {
         self.view.backgroundColor = UIColor.gray
+        
+        scoreLabel.text = "\(repository.getScore())"
         
         easyDifficultyView.configure(backgroundColor: UIColor.gray, textColor: UIColor.white, text: "EASY")
         mediumDifficultyView.configure(backgroundColor: UIColor.darkGray, textColor: UIColor.white, text: "MEDIUM")
@@ -67,8 +70,7 @@ class LevelsViewController: UIViewController {
     }
     
     @objc func tappedOnEasy() {
-        repository.toTimerGame(difficulty: 1)
-//        repository.toBullsEyeGame(difficulty: 1)
+        repository.startRandomGame(difficulty: 1)
     }
     
     @objc func tappedOnMedium() {

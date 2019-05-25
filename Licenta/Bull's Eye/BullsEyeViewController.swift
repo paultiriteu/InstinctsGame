@@ -11,11 +11,11 @@ import UIKit
 class BullsEyeViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var targetScoreLabel: UILabel!
-    @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var targetTextLabel: UILabel!
+    @IBOutlet weak var finishedGameView: FinishedGameView!
     
     private var currentValue = 0
     private var targetValue = 0
@@ -36,6 +36,7 @@ class BullsEyeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.finishedGameView.isHidden = true
         let roundedValue = slider.value.rounded()
         currentValue = Int(roundedValue)
         self.startNewGame()
@@ -95,7 +96,6 @@ class BullsEyeViewController: UIViewController {
         switch level {
         case 1:
             if score >= 1000 {
-                level += 1
                 levelPassedAlert()
                 updateLabels()
                 break
@@ -104,7 +104,6 @@ class BullsEyeViewController: UIViewController {
             }
         case 2:
             if score >= 1300 {
-                level += 1
                 levelPassedAlert()
                 updateLabels()
                 break
@@ -113,7 +112,6 @@ class BullsEyeViewController: UIViewController {
             }
         case 3:
             if score >= 1600 {
-                level += 1
                 levelPassedAlert()
                 updateLabels()
                 break
@@ -160,7 +158,6 @@ class BullsEyeViewController: UIViewController {
         targetLabel.text = String(format: "Move the slider as close as you can to %d points!", targetValue)
         scoreLabel.text = String(format: "Score: %d", score)
         roundLabel.text = String(format: "Rouds left: %d", roundsLeft)
-        levelLabel.text = "Level \(String(level))"
         targetScoreLabel.text = "Target score: \(target)"
     }
     
@@ -197,12 +194,21 @@ class BullsEyeViewController: UIViewController {
     }
     
     func levelPassedAlert() {
-        let message = "You passed level \(level-1)!"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Awesome!", style: .default)
-        
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
+//        let message = "You passed level \(level-1)!"
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let action = UIAlertAction(title: "Awesome!", style: .default)
+//
+//        alert.addAction(action)
+//
+//        present(alert, animated: true, completion: nil)
+        finishedGameView.isHidden = false
+        finishedGameView.configure(gameName: "Bull's Eye", difficulty: self.level, delegate: self)
+        repository.finishedBullsEyeGame(for: self.level, with: score)
+    }
+}
+
+extension BullsEyeViewController: FinishedGameDelegate {
+    func finishedGame() {
+        repository.startRandomGame(difficulty: level)
     }
 }
