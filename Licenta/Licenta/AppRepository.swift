@@ -96,12 +96,12 @@ class AppRepository {
                     nextGameId = Int.random(in: 1...numberOfGames)
                 }
                 
-//                nextGameId = 2
+                nextGameId = 3
                 
                 switch nextGameId {
                 case 1: router.toBullsEyeGame(nickname: user!.nickname, difficulty: difficulty)
                 case 2: router.toTimerGame(nickname: user!.nickname, difficulty: difficulty)
-                case 3: toLevelsView()
+                case 3: router.toSquaresGame(nickname: user!.nickname, difficulty: difficulty)
                 default: break
                 }
             }

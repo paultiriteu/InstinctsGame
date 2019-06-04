@@ -9,6 +9,7 @@
 import UIKit
 
 class BullsEyeViewController: UIViewController {
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var targetScoreLabel: UILabel!
     @IBOutlet weak var targetLabel: UILabel!
@@ -16,6 +17,7 @@ class BullsEyeViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var targetTextLabel: UILabel!
     @IBOutlet weak var finishedGameView: FinishedGameView!
+    @IBOutlet weak var hitMeButton: UIButton!
     
     private var currentValue = 0
     private var targetValue = 0
@@ -36,6 +38,15 @@ class BullsEyeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        slider.minimumTrackTintColor = UIColor.orange
+        slider.maximumTrackTintColor = UIColor.gray
+        
+        hitMeButton.layer.backgroundColor = UIColor.orange.cgColor
+        hitMeButton.setTitleColor(UIColor.white, for: .normal)
+        hitMeButton.layer.cornerRadius = 10
+        hitMeButton.setTitle("HIT ME!", for: .normal)
+        
         self.finishedGameView.isHidden = true
         let roundedValue = slider.value.rounded()
         currentValue = Int(roundedValue)
@@ -81,10 +92,10 @@ class BullsEyeViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    @IBAction func startOverAction(_ sender: Any) {
-        startNewGame()
-    }
+//    
+//    @IBAction func startOverAction(_ sender: Any) {
+//        startNewGame()
+//    }
     
     func startNewGame() {
         score = 0

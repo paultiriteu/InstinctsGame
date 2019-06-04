@@ -18,8 +18,10 @@ class SquaresViewController: UIViewController {
     private var timeCount: Int = 15
     private var score: Int = 0
     
+    private var openCellsIndexPaths = [IndexPath]()
+    
     @IBAction func buttonAction(_ sender: Any) {
-        
+        beginGame()
     }
     
     init(repository: AppRepository, difficulty: Int) {
@@ -53,23 +55,22 @@ class SquaresViewController: UIViewController {
     func beginGame() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {
             _ in
-            var row = Int.random(in: 0...2)
-            var section = Int.random(in: 0...2)
+            var indexPath = IndexPath(row: Int.random(in: 0...2), section: Int.random(in: 0...2))
             
-            var cell = self.collectionView.cellForItem(at: IndexPath(row: row, section: section)) as? SquareCollectionViewCell
-            
-            while cell?.isCellActivated == true {
-                row = Int.random(in: 0...2)
-                section = Int.random(in: 0...2)
-                cell = self.collectionView.cellForItem(at: IndexPath(row: row, section: section)) as? SquareCollectionViewCell
+            while self.openCellsIndexPaths.contains(indexPath) {
+                indexPath = IndexPath(row: Int.random(in: 0...2), section: Int.random(in: 0...2))
             }
+            
+            let cell = self.collectionView.cellForItem(at: indexPath) as? SquareCollectionViewCell
+            self.openCellsIndexPaths.append(indexPath)
             
             cell?.activateCell()
             
-            print("At \(self.timeCount), cell row \(row+1), section \(section+1)")
+            print("At \(self.timeCount), \(indexPath)")
             self.timeCount = self.timeCount - 1
             if self.timeCount == 0 {
                 self.timer?.invalidate()
+                self.timeCount = 15
                 print("Final score \(self.score)")
             }
         })
@@ -78,11 +79,11 @@ class SquaresViewController: UIViewController {
 
 extension SquaresViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,22 +95,31 @@ extension SquaresViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         return CGSize(width: 30, height: 30)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SquareCollectionViewCell {
             cell.cellMadePoint()
+            if let index = openCellsIndexPaths.firstIndex(of: indexPath) {
+                openCellsIndexPaths.remove(at: index)
+            }
         }
     }
 }
 
 extension SquaresViewController: SquareCellDelegate {
-    func cellMadePoint() {
+    func cellMadePoint(cell: UICollectionViewCell) {
+        let _cell = cell as! SquareCollectionViewCell
+        _cell.cellExpired()
         score = score + 1
+    }
+    
+    func cellExpired(cell: UICollectionViewCell) {
+        let indexPath = collectionView.indexPath(for: cell)
+        if let index = openCellsIndexPaths.firstIndex(of: indexPath!) {
+            openCellsIndexPaths.remove(at: index)
+        }
     }
 }

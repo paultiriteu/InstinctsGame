@@ -9,7 +9,8 @@
 import UIKit
 
 protocol SquareCellDelegate: class {
-    func cellMadePoint()
+    func cellMadePoint(cell: UICollectionViewCell)
+    func cellExpired(cell: UICollectionViewCell)
 }
 
 class SquareCollectionViewCell: UICollectionViewCell {
@@ -23,6 +24,8 @@ class SquareCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    
 
     func configure(difficulty: Int, delegate: SquareCellDelegate) {
         self.difficulty = difficulty
@@ -48,14 +51,15 @@ class SquareCollectionViewCell: UICollectionViewCell {
     func cellMadePoint() {
         if isCellActivated {
             print("POINT!")
+            delegate?.cellMadePoint(cell: self)
             backgroundColor = .black
             timer?.invalidate()
-            delegate?.cellMadePoint()
         }
     }
     
     func cellExpired() {
         isCellActivated = false
+        delegate?.cellExpired(cell: self)
         backgroundColor = .black
         timeCount = 100 / difficulty
         timer?.invalidate()

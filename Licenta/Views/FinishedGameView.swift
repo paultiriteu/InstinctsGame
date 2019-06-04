@@ -24,6 +24,10 @@ class FinishedGameView: CustomView {
         delegate?.finishedGame()
     }
     
+    override func configureUI() {
+        button.layer.cornerRadius = 10
+    }
+    
     func configure(gameName: String, difficulty: Int, delegate: FinishedGameDelegate) {
         self.delegate = delegate
         self.gameName = gameName

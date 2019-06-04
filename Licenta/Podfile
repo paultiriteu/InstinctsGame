@@ -8,3 +8,4 @@ target 'Licenta' do
     pod 'RealmSwift'
 
 end
+
