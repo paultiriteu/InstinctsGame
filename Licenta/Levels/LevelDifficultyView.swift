@@ -15,6 +15,8 @@ class LevelDifficultyView: CustomView {
     @IBOutlet weak var lockedLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     
+    var isOpen = false
+    
     func configure(backgroundColor: UIColor, textColor: UIColor, text: String) {
         self.backgroundView.backgroundColor = backgroundColor
         self.textLabel.text = text
@@ -31,5 +33,6 @@ class LevelDifficultyView: CustomView {
     func openView() {
         lockedView.isHidden = true
         lockedLabel.isHidden = true
+        isOpen = true
     }
 }

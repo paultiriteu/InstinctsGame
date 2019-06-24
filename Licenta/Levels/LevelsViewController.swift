@@ -41,7 +41,7 @@ class LevelsViewController: UIViewController {
         
         easyDifficultyView.configure(backgroundColor: UIColor.gray, textColor: UIColor.white, text: "EASY")
         mediumDifficultyView.configure(backgroundColor: UIColor.darkGray, textColor: UIColor.white, text: "MEDIUM")
-        hardDifficultyView.configure(backgroundColor: UIColor.black, textColor: UIColor.black, text: "HARD")
+        hardDifficultyView.configure(backgroundColor: UIColor.black, textColor: UIColor.darkGray, text: "HARD")
         
         easyDifficultyView.layer.shadowColor = UIColor.black.cgColor
         easyDifficultyView.layer.shadowOpacity = 1
@@ -62,11 +62,26 @@ class LevelsViewController: UIViewController {
         mediumDifficultyView.layer.cornerRadius = 10
         hardDifficultyView.layer.cornerRadius = 10
         
-        easyDifficultyView.openView()
-        
         easyDifficultyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedOnEasy)))
         mediumDifficultyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedOnMedium)))
         hardDifficultyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedOnHard)))
+        
+        easyDifficultyView.openView()
+        let openViews = repository.getDifficulties()
+        
+        if openViews.count == 3 {
+            
+        } else {
+            for view in openViews {
+                switch view {
+                case 2: mediumDifficultyView.openView()
+                    mediumDifficultyView.isUserInteractionEnabled = true
+                case 3: hardDifficultyView.openView()
+                    hardDifficultyView.isUserInteractionEnabled = true
+                default: break
+                }
+            }
+        }
     }
     
     @objc func tappedOnEasy() {
@@ -74,8 +89,10 @@ class LevelsViewController: UIViewController {
     }
     
     @objc func tappedOnMedium() {
+        repository.startRandomGame(difficulty: 2)
     }
     
     @objc func tappedOnHard() {
+        repository.startRandomGame(difficulty: 3)
     }
 }

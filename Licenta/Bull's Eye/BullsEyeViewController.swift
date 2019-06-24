@@ -191,15 +191,16 @@ class BullsEyeViewController: UIViewController {
     func lostAlert() {
         let message = "You didn't get enough points..."
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Start over", style: .default, handler: {
+        alert.addAction(UIAlertAction(title: "To main menu", style: .default, handler: { _ in
+            self.repository.toLevelsView()
+        }))
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: {
             action in
             self.level = 1
             self.score = 0
             self.roundsLeft = 10
             self.startNewRound()
-        })
-        
-        alert.addAction(action)
+        }))
         
         present(alert, animated: true, completion: nil)
     }

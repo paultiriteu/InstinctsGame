@@ -36,7 +36,8 @@ class SquareCollectionViewCell: UICollectionViewCell {
     func activateCell() {
         self.isCellActivated = true
         backgroundColor = .green
-        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: {
+        let interval = 2.0 / Double(difficulty)
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: {
             _ in
             while self.timeCount > 0 {
                 self.timeCount = self.timeCount - 1

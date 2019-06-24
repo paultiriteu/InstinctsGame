@@ -31,11 +31,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="185.5" height="275"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WP-yu-xoW" customClass="LevelDifficultyView" customModule="Licenta" customModuleProvider="target">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WP-yu-xoW" customClass="LevelDifficultyView" customModule="Licenta" customModuleProvider="target">
                             <rect key="frame" x="205.5" y="0.0" width="186" height="275"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAI-0t-elD" customClass="LevelDifficultyView" customModule="Licenta" customModuleProvider="target">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAI-0t-elD" customClass="LevelDifficultyView" customModule="Licenta" customModuleProvider="target">
                             <rect key="frame" x="411.5" y="0.0" width="185.5" height="275"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>

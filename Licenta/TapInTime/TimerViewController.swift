@@ -25,7 +25,7 @@ class TimerViewController: UIViewController {
     private var target: Int = 0
     private var range: Int = 0
     private var difficulty: Int
-    private var score: Int = 101
+    private var score: Int = 0
     private var round: Int = 0
     private var hasTimerStarted: Bool = false
     
@@ -77,13 +77,13 @@ class TimerViewController: UIViewController {
         mainLabel.isHidden = true
         titleLabel.isHidden = true
         
+        self.round = 1
         scoreLabel.text = "Score: \(score)"
-        roundsLabel.text = "Rounds left: \(5 - round)"
+        roundsLabel.text = "Rounds left: 5"
         
         nextRoundButton.setTitle("Next round", for: .normal)
         nextRoundButton.isHidden = true
         
-        self.round = 5
     }
     
     @objc func viewWasTapped() {
@@ -146,11 +146,11 @@ class TimerViewController: UIViewController {
         let rangeTime: Int
         switch difficulty {
             case 1:
-                rangeTime = Int.random(in:  5...7)
+                rangeTime = Int.random(in:  3...5)
             case 2:
-                rangeTime = Int.random(in: 3...5)
+                rangeTime = Int.random(in: 2...3)
             case 3:
-                rangeTime = Int.random(in: 1...3)
+                rangeTime = Int.random(in: 1...2)
         default: return 0
         }
         return rangeTime
@@ -206,27 +206,45 @@ class TimerViewController: UIViewController {
             
             let alert = UIAlertController(title: "Nice!", message: "You stopped the timer 0.\(abs(target - actualTime)) seconds away from the target! You got \(result) points!", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Thanks!", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Thanks!", style: .default, handler: { _ in
+                self.checkIfGameIsDone()
+            }))
             self.present(alert, animated: true, completion: nil)
             
             nextRoundButton.isHidden = false
         } else {
             let alert = UIAlertController(title: "Oh no!", message: "You're out of range! You didn't get any point!", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Oops!", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Oops!", style: .default, handler: { _ in
+                self.checkIfGameIsDone()
+            }))
             self.present(alert, animated: true, completion: nil)
             nextRoundButton.isHidden = false
         }
         
         scoreLabel.text = "Score: \(score)"
         roundsLabel.text = "Rounds left: \(5 - round)"
-        
+    }
+    
+    func checkIfGameIsDone() {
         if round == 5 {
             if score >= 100 {
-                finishedGameView.isHidden = false
                 repository.finishedTimerGame(for: difficulty, with: score)
+                finishedGameView.isHidden = false
             } else {
-                print("You lost!")
+                let alert = UIAlertController(title: "You lost!", message: "You couldn't complete this level", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "To main menu", style: .default, handler: { _ in
+                    self.repository.toLevelsView()
+                }))
+                alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { _ in
+                    self.score = 0
+                    self.round = 1
+                    self.roundsLabel.text = "Rounds left: 5"
+                    self.scoreLabel.text = "Score: 0"
+                    self.beginGame()
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

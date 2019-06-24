@@ -22,8 +22,8 @@ class AppRepository {
     }
     
     func getNickname() -> String {
-        guard let name = userNickname else { return "" }
-        return name
+        guard let user = realm.objects(User.self).first else { return "" }
+        return user.nickname
     }
     
     func setNickname(nickname: String) {
@@ -47,6 +47,10 @@ class AppRepository {
         router.toTimerGame(nickname: getNickname(), difficulty: difficulty)
     }
     
+    func toSquaresGame(difficulty: Int) {
+        router.toSquaresGame(nickname: getNickname(), difficulty: difficulty)
+    }
+    
     func toLevelsView() {
         router.toLevelsView(nickname: getNickname())
     }
@@ -67,6 +71,14 @@ class AppRepository {
         userFinishedGame(gameId: game.id, difficulty: difficulty, with: score)
     }
     
+    func finishedSquaresGame(for difficulty: Int, with score: Int) {
+        let game = Game()
+        game.id = GamesIds.Squares.getId()
+        game.name = GamesIds.Squares.rawValue
+        
+        userFinishedGame(gameId: game.id, difficulty: difficulty, with: score)
+    }
+    
     func userFinishedGame(gameId: Int, difficulty: Int, with score: Int) {
         if realm.objects(User.self).count > 0 {
             let user = realm.objects(User.self).first
@@ -77,8 +89,17 @@ class AppRepository {
                     try! realm.write {
                         user?.lastDifficultyCompletedGames.append(gameId)
                         user?.totalScore = totalScore
-                        print(user?.totalScore)
                     }
+                }
+            }
+            else {
+                let difficultiesCompleted = user?.difficultiesCompleted
+                try! realm.write {
+                    user?.difficultiesCompleted.append(difficultiesCompleted!.last! + 1)
+                    let list = List<Int>()
+                    list.append(0)
+                    user?.lastDifficultyCompletedGames = list
+                    user?.totalScore = totalScore
                 }
             }
         }
@@ -88,6 +109,9 @@ class AppRepository {
         if realm.objects(User.self).count > 0 {
             let user = realm.objects(User.self).first
             
+            if user!.lastDifficultyCompletedGames.count == 0 {
+                router.toLevelsView(nickname: getNickname())
+            }
             if (user?.lastDifficultyCompletedGames.count)! < 4 {
                 let finishedGames = Array(user!.lastDifficultyCompletedGames)
                 var nextGameId = 0
@@ -96,14 +120,14 @@ class AppRepository {
                     nextGameId = Int.random(in: 1...numberOfGames)
                 }
                 
-                nextGameId = 3
-                
                 switch nextGameId {
-                case 1: router.toBullsEyeGame(nickname: user!.nickname, difficulty: difficulty)
-                case 2: router.toTimerGame(nickname: user!.nickname, difficulty: difficulty)
-                case 3: router.toSquaresGame(nickname: user!.nickname, difficulty: difficulty)
+                case 1: toBullsEyeGame(difficulty: difficulty)
+                case 2: toTimerGame(difficulty: difficulty)
+                case 3: toSquaresGame(difficulty: difficulty)
                 default: break
                 }
+            } else {
+                router.toLevelsView(nickname: getNickname())
             }
         }
     }
@@ -117,11 +141,20 @@ class AppRepository {
         
         return 0
     }
+    
+    func getDifficulties() -> [Int] {
+        if realm.objects(User.self).count > 0 {
+            let user = realm.objects(User.self).first
+            return Array(user!.difficultiesCompleted)
+        }
+        return [Int]()
+    }
 }
 
 enum GamesIds: String {
     case BullsEye = "BullsEye"
     case Timer = "Timer"
+    case Squares = "Squares"
     
     func getId() -> Int {
         switch self {
@@ -129,6 +162,8 @@ enum GamesIds: String {
             return 1
         case .Timer:
             return 2
+        case .Squares:
+            return 3
         }
     }
 }
