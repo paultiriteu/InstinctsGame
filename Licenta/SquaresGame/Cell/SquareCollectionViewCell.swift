@@ -37,14 +37,15 @@ class SquareCollectionViewCell: UICollectionViewCell {
         self.isCellActivated = true
         backgroundColor = .green
         let interval = 2.0 / Double(difficulty)
-        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: {
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self]
             _ in
-            while self.timeCount > 0 {
-                self.timeCount = self.timeCount - 1
+            guard let welf = self else {return}
+            while welf.timeCount > 0 {
+                welf.timeCount = welf.timeCount - 1
             }
             
-            if self.timeCount == 0 {
-                self.cellExpired()
+            if welf.timeCount == 0 {
+                welf.cellExpired()
             }
         })
     }

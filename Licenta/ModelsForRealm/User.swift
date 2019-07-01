@@ -11,10 +11,15 @@ import RealmSwift
 import Realm
 
 class User: Object {
+    @objc dynamic var id: Int = 0
     @objc dynamic var nickname: String = ""
     var difficultiesCompleted = List<Int>()
     var lastDifficultyCompletedGames = List<Int>()
     @objc dynamic var totalScore: Int = 0
+    
+    override class func primaryKey() -> String {
+        return "id"
+    }
 }
 
 //class IntObject: Object {

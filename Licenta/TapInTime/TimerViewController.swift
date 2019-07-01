@@ -16,6 +16,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var nextRoundButton: UIButton!
     @IBOutlet weak var roundsLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     private let repository: AppRepository
     
@@ -28,9 +29,10 @@ class TimerViewController: UIViewController {
     private var score: Int = 0
     private var round: Int = 0
     private var hasTimerStarted: Bool = false
-    
-    @IBAction func back(_ sender: Any) {
-        repository.toLevelsView()
+
+    @IBAction func backButtonAction(_ sender: Any) {
+        timer?.invalidate()
+        repository.popViewController()
     }
     
     @IBAction func nextRoundButtonAction(_ sender: Any) {
@@ -77,13 +79,15 @@ class TimerViewController: UIViewController {
         mainLabel.isHidden = true
         titleLabel.isHidden = true
         
+        mainLabel.textColor = UIColor.white
+        
         self.round = 1
         scoreLabel.text = "Score: \(score)"
         roundsLabel.text = "Rounds left: 5"
         
+        nextRoundButton.layer.cornerRadius = 10
         nextRoundButton.setTitle("Next round", for: .normal)
         nextRoundButton.isHidden = true
-        
     }
     
     @objc func viewWasTapped() {
@@ -99,34 +103,37 @@ class TimerViewController: UIViewController {
     func configureTimerForWarmup() {
         self.mainView.isUserInteractionEnabled = false
         timerCount = 3
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self]
             _ in
-            if self.timerCount != 0 {
-                self.titleLabel.text = String(Int(self.timerCount))
+            guard let welf = self else {return}
+            
+            if welf.timerCount != 0 {
+                welf.titleLabel.text = String(Int(welf.timerCount))
             } else {
-                self.titleLabel.text = "GO!!!"
-                self.timer?.invalidate()
-                self.configureTimerForGame()
+                welf.titleLabel.text = "GO!!!"
+                welf.timer?.invalidate()
+                welf.configureTimerForGame()
             }
-            self.timerCount = self.timerCount - 1
+            welf.timerCount = welf.timerCount - 1
         })
     }
     
     func configureTimerForGame() {
         self.mainView.isUserInteractionEnabled = true
-        self.mainView.backgroundColor = UIColor.red
+        self.mainView.backgroundColor = UIColor(red: 196/255, green: 47/255, blue: 47/255, alpha: 1)
         self.hasTimerStarted = true
         
         self.mainLabel.text = String(self.actualTime / 10) + "." + String(self.actualTime % 10)
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self]
             _ in
-            self.actualTime = self.actualTime - 1
+            guard let welf = self else {return}
+            welf.actualTime = welf.actualTime - 1
             
-            if self.actualTime == 0 {
-                self.timer?.invalidate()
-                self.titleLabel.text = "You missed it!"
+            if welf.actualTime == 0 {
+                welf.timer?.invalidate()
+                welf.titleLabel.text = "You missed it!"
             }
-            self.mainLabel.text = String(self.actualTime / 10) + "." + String(self.actualTime % 10)
+            welf.mainLabel.text = String(welf.actualTime / 10) + "." + String(welf.actualTime % 10)
         })
     }
     
@@ -163,7 +170,7 @@ class TimerViewController: UIViewController {
         
         titleLabel.text = "Press START when you are ready"
         mainLabel.text = "START"
-        mainView.backgroundColor = UIColor.green
+        mainView.backgroundColor = UIColor(red: 47/255, green: 196, blue: 47/255, alpha: 1)
         
         self.actualTime = getRandomTime()
         self.range = getRange()
@@ -177,9 +184,9 @@ class TimerViewController: UIViewController {
     
     func getConclusion() {
         if actualTime == target {
-            score = score + 100
+            score = score + 500
             
-            let alert = UIAlertController(title: "CONGRATULATIONS!!!", message: "You have hit the perfect time!\nYou got 100 points!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "CONGRATULATIONS!!!", message: "You have hit the perfect time!\nYou got 500 points!", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Thanks!", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -193,13 +200,13 @@ class TimerViewController: UIViewController {
         
         if (target-range)...(target+range) ~= actualTime {
             if actualTime > target {
-                result = 10 * ((target + range) - actualTime)
+                result = 100 * ((target + range) - actualTime)
             } else {
-                result = 10 * (actualTime - (target - range))
+                result = 100 * (actualTime - (target - range))
             }
             
             if result == 0 {
-                self.score = self.score + 5
+                self.score = self.score + 50
             } else {
                 self.score = self.score + result
             }
@@ -228,7 +235,7 @@ class TimerViewController: UIViewController {
     
     func checkIfGameIsDone() {
         if round == 5 {
-            if score >= 100 {
+            if score >= 1000 {
                 repository.finishedTimerGame(for: difficulty, with: score)
                 finishedGameView.isHidden = false
             } else {

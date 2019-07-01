@@ -38,14 +38,17 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if realm.objects(User.self).count > 0 {
-            authorized()
-        }
-        
         configureUI()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if realm.objects(User.self).count > 0 {
+            authorized()
+        }
     }
     
     @objc func dismissKeyboard() {

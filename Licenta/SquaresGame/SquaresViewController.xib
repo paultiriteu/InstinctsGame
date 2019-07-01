@@ -10,10 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SquaresViewController" customModule="Licenta" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SquaresViewController" customModule="TrustYourInstinct" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="pmj-2z-d6H" id="Y8O-1e-CbH"/>
                 <outlet property="finishedGameView" destination="Aq9-GC-QFn" id="c5X-7r-NrP"/>
+                <outlet property="imageView" destination="RsT-lB-XuZ" id="oUm-QF-zhq"/>
                 <outlet property="targetScoreLabel" destination="mcD-5s-HRL" id="7Ln-mt-Nbj"/>
                 <outlet property="titleLabel" destination="hMV-ot-yMe" id="orY-0O-3oF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,6 +25,9 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mouse" translatesAutoresizingMaskIntoConstraints="NO" id="RsT-lB-XuZ">
+                    <rect key="frame" x="442" y="0.0" width="225" height="225"/>
+                </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pmj-2z-d6H">
                     <rect key="frame" x="218.5" y="72.5" width="230" height="230"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,13 +48,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0b-qf-mGR">
+                    <rect key="frame" x="537" y="35.5" width="30" height="34"/>
+                    <state key="normal" title="X"/>
+                    <connections>
+                        <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="JqC-Qk-Qaz"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcD-5s-HRL">
                     <rect key="frame" x="126.5" y="177.5" width="42" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-GC-QFn" customClass="FinishedGameView" customModule="Licenta" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-GC-QFn" customClass="FinishedGameView" customModule="TrustYourInstinct" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -61,9 +72,13 @@
                 <constraint firstItem="pmj-2z-d6H" firstAttribute="top" secondItem="hMV-ot-yMe" secondAttribute="bottom" constant="10" id="7I2-6F-kOP"/>
                 <constraint firstItem="hMV-ot-yMe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BBY-u5-9ug"/>
                 <constraint firstItem="pmj-2z-d6H" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="DwN-oE-Aei"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="i0b-qf-mGR" secondAttribute="trailing" constant="100" id="IZa-GU-LF8"/>
                 <constraint firstItem="pmj-2z-d6H" firstAttribute="leading" secondItem="mcD-5s-HRL" secondAttribute="trailing" constant="50" id="LR7-qt-QHT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RsT-lB-XuZ" secondAttribute="trailing" id="LiR-iC-dHn"/>
                 <constraint firstItem="pmj-2z-d6H" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="MnD-lp-mHk"/>
+                <constraint firstItem="RsT-lB-XuZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Twi-M3-Wfv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Aq9-GC-QFn" secondAttribute="bottom" id="U9a-9Z-Gu2"/>
+                <constraint firstItem="i0b-qf-mGR" firstAttribute="centerY" secondItem="hMV-ot-yMe" secondAttribute="centerY" id="cos-Cd-77B"/>
                 <constraint firstItem="Aq9-GC-QFn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lhC-rC-HZb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Aq9-GC-QFn" secondAttribute="trailing" id="pgk-wa-lG7"/>
                 <constraint firstItem="Aq9-GC-QFn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yyk-kt-ppL"/>
@@ -72,4 +87,7 @@
             <point key="canvasLocation" x="30.134932533733135" y="130.40000000000001"/>
         </view>
     </objects>
+    <resources>
+        <image name="mouse" width="225" height="225"/>
+    </resources>
 </document>

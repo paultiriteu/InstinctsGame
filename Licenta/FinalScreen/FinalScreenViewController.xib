@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FinalScreenViewController" customModule="TrustYourInstinct" customModuleProvider="target">
+            <connections>
+                <outlet property="label" destination="uaX-lm-mZ8" id="6aT-Fd-pQ4"/>
+                <outlet property="thanksButton" destination="r0b-Tz-iLX" id="L8m-tQ-sIz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaX-lm-mZ8">
+                    <rect key="frame" x="263" y="110" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0b-Tz-iLX">
+                    <rect key="frame" x="249" y="250" width="70" height="40"/>
+                    <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="OQx-J1-uyD"/>
+                        <constraint firstAttribute="height" constant="40" id="ycS-36-yP7"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="EXH-LK-04y"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="r0b-Tz-iLX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GT6-nm-jTt"/>
+                <constraint firstItem="uaX-lm-mZ8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-40" id="YS9-bK-jLM"/>
+                <constraint firstItem="uaX-lm-mZ8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ajj-0r-qFy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="r0b-Tz-iLX" secondAttribute="bottom" constant="30" id="faV-Le-jZ0"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="35.91549295774648" y="210"/>
+        </view>
+    </objects>
+</document>

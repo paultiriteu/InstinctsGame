@@ -14,6 +14,8 @@ class AppRepository {
     private let router: MainAppRouter
     private var realm: Realm
     
+    private var justFinishedDifficulty = false
+    
     let numberOfGames = 3
     
     init(router: MainAppRouter) {
@@ -30,12 +32,13 @@ class AppRepository {
         self.userNickname = nickname
         
         let user = User()
+        user.id = 1
         user.nickname = nickname
         user.difficultiesCompleted.append(0)
         user.lastDifficultyCompletedGames.append(0)
         
         try! realm.write {
-            realm.add(user)
+            realm.add(user, update: true)
         }
     }
     
@@ -81,27 +84,36 @@ class AppRepository {
     
     func userFinishedGame(gameId: Int, difficulty: Int, with score: Int) {
         if realm.objects(User.self).count > 0 {
-            let user = realm.objects(User.self).first
+            let user = realm.objects(User.self).last
             let totalScore = user!.totalScore + score
             
-            if (user?.lastDifficultyCompletedGames.count)! < 3 {
-                if user?.lastDifficultyCompletedGames.contains(gameId) == false {
-                    try! realm.write {
-                        user?.lastDifficultyCompletedGames.append(gameId)
-                        user?.totalScore = totalScore
+                if (user?.lastDifficultyCompletedGames.count)! < 3 {
+                    if user?.lastDifficultyCompletedGames.contains(gameId) == false {
+                        try! realm.write {
+                            user?.lastDifficultyCompletedGames.append(gameId)
+                            user?.totalScore = totalScore
+                        }
                     }
-                }
+                } else {
+                    if (user?.difficultiesCompleted.count)! < 3 {
+                        let difficultiesCompleted = user?.difficultiesCompleted
+                        try! realm.write {
+                            user?.difficultiesCompleted.append(difficultiesCompleted!.last! + 1)
+                            //                    let list = List<Int>()
+                            //                    list.append(0)
+                            user?.lastDifficultyCompletedGames.removeAll()
+                            user?.lastDifficultyCompletedGames.append(0)
+                            user?.totalScore = totalScore
+                            self.justFinishedDifficulty = true
+                            
+                            //                    realm.add(user!, update: true)
+                        }
+                    }
+                    else {
+                        router.toFinalScreen(nickname: getNickname())
+                    }
             }
-            else {
-                let difficultiesCompleted = user?.difficultiesCompleted
-                try! realm.write {
-                    user?.difficultiesCompleted.append(difficultiesCompleted!.last! + 1)
-                    let list = List<Int>()
-                    list.append(0)
-                    user?.lastDifficultyCompletedGames = list
-                    user?.totalScore = totalScore
-                }
-            }
+            print(user)
         }
     }
     
@@ -109,10 +121,9 @@ class AppRepository {
         if realm.objects(User.self).count > 0 {
             let user = realm.objects(User.self).first
             
-            if user!.lastDifficultyCompletedGames.count == 0 {
+            if justFinishedDifficulty {
                 router.toLevelsView(nickname: getNickname())
-            }
-            if (user?.lastDifficultyCompletedGames.count)! < 4 {
+            } else {
                 let finishedGames = Array(user!.lastDifficultyCompletedGames)
                 var nextGameId = 0
                 
@@ -126,8 +137,6 @@ class AppRepository {
                 case 3: toSquaresGame(difficulty: difficulty)
                 default: break
                 }
-            } else {
-                router.toLevelsView(nickname: getNickname())
             }
         }
     }
@@ -148,6 +157,10 @@ class AppRepository {
             return Array(user!.difficultiesCompleted)
         }
         return [Int]()
+    }
+    
+    func popViewController() {
+        router.popViewController()
     }
 }
 

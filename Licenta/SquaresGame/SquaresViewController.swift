@@ -13,6 +13,7 @@ class SquaresViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var targetScoreLabel: UILabel!
     @IBOutlet weak var finishedGameView: FinishedGameView!
+    @IBOutlet weak var imageView: UIImageView!
     
     private let repository: AppRepository
     private let difficulty: Int
@@ -23,6 +24,11 @@ class SquaresViewController: UIViewController {
     private var targetScore: Int = 0
 
     private var openCellsIndexPaths = [IndexPath]()
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        timer?.invalidate()
+        repository.popViewController()
+    }
     
     @IBAction func buttonAction(_ sender: Any) {
         beginGame()
@@ -78,23 +84,24 @@ class SquaresViewController: UIViewController {
         score = 0
         let totalCells = self.cellsPerRow * self.cellsPerRow
         let interval = 1.0 / Double(difficulty)
-        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: {
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self]
             _ in
+            guard let welf = self else {return}
             var indexPath = IndexPath(row: Int.random(in: 0...totalCells - 1), section: 0)
             
-            while self.openCellsIndexPaths.contains(indexPath) {
+            while welf.openCellsIndexPaths.contains(indexPath) {
                 indexPath = IndexPath(row: Int.random(in: 0...totalCells - 1), section: 0)
             }
             
-            let cell = self.collectionView.cellForItem(at: indexPath) as? SquareCollectionViewCell
-            self.openCellsIndexPaths.append(indexPath)
+            let cell = welf.collectionView.cellForItem(at: indexPath) as? SquareCollectionViewCell
+            welf.openCellsIndexPaths.append(indexPath)
             
             cell?.activateCell()
             
-            print("At \(self.timeCount), \(indexPath)")
-            self.timeCount = self.timeCount - 1
-            if self.timeCount == 0 {
-                self.timer?.invalidate()
+            print("At \(welf.timeCount), \(indexPath)")
+            welf.timeCount = welf.timeCount - 1
+            if welf.timeCount == 0 {
+                welf.timer?.invalidate()
             }
         })
     }

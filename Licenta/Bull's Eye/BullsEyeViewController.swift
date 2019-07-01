@@ -26,6 +26,10 @@ class BullsEyeViewController: UIViewController {
     private var level = 0
     private let repository: AppRepository
     
+    @IBAction func backButtonAction(_ sender: Any) {
+        repository.popViewController()
+    }
+    
     init(repository: AppRepository, difficulty: Int) {
         self.level = difficulty
         self.repository = repository

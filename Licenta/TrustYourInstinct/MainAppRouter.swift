@@ -49,7 +49,13 @@ class MainAppRouter {
         navController!.pushViewController(vc, animated: true)
     }
     
+    func toFinalScreen(nickname: String) {
+        let repository = AppRepository(router: self)
+        let vc = FinalScreenViewController(repository: repository)
+        navController?.pushViewController(vc, animated: true)
+    }
+    
     func popViewController() {
-        navController?.popViewController(animated: true)
+        navController?.popToRootViewController(animated: true)
     }
 }

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BullsEyeViewController" customModule="Licenta" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BullsEyeViewController" customModule="TrustYourInstinct" customModuleProvider="target">
             <connections>
                 <outlet property="finishedGameView" destination="3nq-0y-PFT" id="tur-WP-5xu"/>
                 <outlet property="hitMeButton" destination="88a-O7-3ls" id="1UH-Ql-gTC"/>
@@ -78,7 +78,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nq-0y-PFT" customClass="FinishedGameView" customModule="Licenta" customModuleProvider="target">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nq-0y-PFT" customClass="FinishedGameView" customModule="TrustYourInstinct" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -88,6 +88,13 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhx-rj-A5X">
+                    <rect key="frame" x="537" y="25" width="30" height="34"/>
+                    <state key="normal" title="X"/>
+                    <connections>
+                        <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="91x-qi-oLN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -96,6 +103,7 @@
                 <constraint firstItem="29E-Sz-civ" firstAttribute="centerY" secondItem="Z7V-mX-JKy" secondAttribute="centerY" id="4WG-db-cpV"/>
                 <constraint firstItem="Z7V-mX-JKy" firstAttribute="top" secondItem="ge0-kZ-1Nv" secondAttribute="bottom" constant="20" id="6uN-Lh-zvK"/>
                 <constraint firstItem="oDO-z9-bEU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="CSs-0v-Zo6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yhx-rj-A5X" secondAttribute="trailing" constant="100" id="TZG-TS-H7m"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GTt-Zx-xWu" secondAttribute="bottom" id="TZo-ii-swt"/>
                 <constraint firstItem="Z7V-mX-JKy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TgZ-2l-430"/>
                 <constraint firstAttribute="bottom" secondItem="3nq-0y-PFT" secondAttribute="bottom" id="U5F-0q-wDP"/>
@@ -106,6 +114,7 @@
                 <constraint firstItem="Z7V-mX-JKy" firstAttribute="leading" secondItem="29E-Sz-civ" secondAttribute="trailing" constant="3" id="gc5-hw-Xbg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3nq-0y-PFT" secondAttribute="trailing" id="ifa-MU-bTr"/>
                 <constraint firstItem="Z7V-mX-JKy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="80" id="jNA-7R-D3X"/>
+                <constraint firstItem="Yhx-rj-A5X" firstAttribute="centerY" secondItem="tSq-Gu-N6X" secondAttribute="centerY" id="ji9-gz-Ioz"/>
                 <constraint firstItem="Z7V-mX-JKy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="lPQ-hB-Wy7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OTD-TF-y5T" secondAttribute="bottom" constant="40" id="liz-Kf-G3O"/>
                 <constraint firstItem="GTt-Zx-xWu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pZr-Of-agb"/>

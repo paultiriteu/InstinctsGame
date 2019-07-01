@@ -26,6 +26,8 @@
 		DA1E782C226F7853008A1CEA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E782A226F7853008A1CEA /* TimerViewController.swift */; };
 		DA1E782D226F7853008A1CEA /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1E782B226F7853008A1CEA /* TimerViewController.xib */; };
 		DA9062762286E10600E05E64 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9062752286E10600E05E64 /* Game.swift */; };
+		DA9AB0D422C69C1600A18788 /* FinalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AB0D222C69C1600A18788 /* FinalScreenViewController.swift */; };
+		DA9AB0D522C69C1600A18788 /* FinalScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9AB0D322C69C1600A18788 /* FinalScreenViewController.xib */; };
 		DA9F587D228DA07300A79DA5 /* SquaresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9F587B228DA07300A79DA5 /* SquaresViewController.swift */; };
 		DA9F587E228DA07300A79DA5 /* SquaresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F587C228DA07300A79DA5 /* SquaresViewController.xib */; };
 		DA9F5886228DA35100A79DA5 /* SquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9F5884228DA35100A79DA5 /* SquareCollectionViewCell.swift */; };
@@ -44,7 +46,7 @@
 		3CB5D42222395CF9005E4130 /* LevelDifficultyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelDifficultyView.xib; sourceTree = "<group>"; };
 		3CB5D42422395D03005E4130 /* LevelDifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDifficultyView.swift; sourceTree = "<group>"; };
 		3CB5D42822395D54005E4130 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		3CD4B4B922280FDD00327712 /* Licenta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Licenta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CD4B4B922280FDD00327712 /* TrustYourInstinct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrustYourInstinct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CD4B4BC22280FDD00327712 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CD4B4BE22280FDD00327712 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3CD4B4C322280FDF00327712 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +60,8 @@
 		DA1E782A226F7853008A1CEA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		DA1E782B226F7853008A1CEA /* TimerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerViewController.xib; sourceTree = "<group>"; };
 		DA9062752286E10600E05E64 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		DA9AB0D222C69C1600A18788 /* FinalScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreenViewController.swift; sourceTree = "<group>"; };
+		DA9AB0D322C69C1600A18788 /* FinalScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalScreenViewController.xib; sourceTree = "<group>"; };
 		DA9F587B228DA07300A79DA5 /* SquaresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquaresViewController.swift; sourceTree = "<group>"; };
 		DA9F587C228DA07300A79DA5 /* SquaresViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquaresViewController.xib; sourceTree = "<group>"; };
 		DA9F5884228DA35100A79DA5 /* SquareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		3CD4B4B022280FDD00327712 = {
 			isa = PBXGroup;
 			children = (
+				DA9AB0D122C69BDF00A18788 /* FinalScreen */,
 				DA9F587A228DA05600A79DA5 /* SquaresGame */,
 				DAA8FED82286D821009BCE04 /* Views */,
 				DA1E7829226F782B008A1CEA /* TapInTime */,
@@ -125,7 +130,7 @@
 				3CB5D41D22395C5D005E4130 /* Levels */,
 				3C89EAF92230304500D5AE39 /* Bull's Eye */,
 				3CD4B4CE22280FEC00327712 /* Authentication */,
-				3CD4B4BB22280FDD00327712 /* Licenta */,
+				3CD4B4BB22280FDD00327712 /* TrustYourInstinct */,
 				3CD4B4BA22280FDD00327712 /* Products */,
 				572952ED32CE4D4C96BB8CB6 /* Pods */,
 				9023C97BA42F892ED33264E3 /* Frameworks */,
@@ -135,12 +140,12 @@
 		3CD4B4BA22280FDD00327712 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CD4B4B922280FDD00327712 /* Licenta.app */,
+				3CD4B4B922280FDD00327712 /* TrustYourInstinct.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3CD4B4BB22280FDD00327712 /* Licenta */ = {
+		3CD4B4BB22280FDD00327712 /* TrustYourInstinct */ = {
 			isa = PBXGroup;
 			children = (
 				3CB5D42722395D49005E4130 /* Utils */,
@@ -151,7 +156,7 @@
 				3CD4B4D7222810C500327712 /* MainAppRouter.swift */,
 				3C89EAF722302E0100D5AE39 /* AppRepository.swift */,
 			);
-			path = Licenta;
+			path = TrustYourInstinct;
 			sourceTree = "<group>";
 		};
 		3CD4B4CE22280FEC00327712 /* Authentication */ = {
@@ -189,6 +194,15 @@
 			path = TapInTime;
 			sourceTree = "<group>";
 		};
+		DA9AB0D122C69BDF00A18788 /* FinalScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DA9AB0D222C69C1600A18788 /* FinalScreenViewController.swift */,
+				DA9AB0D322C69C1600A18788 /* FinalScreenViewController.xib */,
+			);
+			path = FinalScreen;
+			sourceTree = "<group>";
+		};
 		DA9F587A228DA05600A79DA5 /* SquaresGame */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,9 +234,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3CD4B4B822280FDD00327712 /* Licenta */ = {
+		3CD4B4B822280FDD00327712 /* TrustYourInstinct */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3CD4B4CB22280FDF00327712 /* Build configuration list for PBXNativeTarget "Licenta" */;
+			buildConfigurationList = 3CD4B4CB22280FDF00327712 /* Build configuration list for PBXNativeTarget "TrustYourInstinct" */;
 			buildPhases = (
 				184BFCDE4DE79AE5935BF4C7 /* [CP] Check Pods Manifest.lock */,
 				3CD4B4B522280FDD00327712 /* Sources */,
@@ -234,9 +248,9 @@
 			);
 			dependencies = (
 			);
-			name = Licenta;
+			name = TrustYourInstinct;
 			productName = Licenta;
-			productReference = 3CD4B4B922280FDD00327712 /* Licenta.app */;
+			productReference = 3CD4B4B922280FDD00327712 /* TrustYourInstinct.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -254,7 +268,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3CD4B4B422280FDD00327712 /* Build configuration list for PBXProject "Trust Your Instinct" */;
+			buildConfigurationList = 3CD4B4B422280FDD00327712 /* Build configuration list for PBXProject "TrustYourInstinct" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -267,7 +281,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3CD4B4B822280FDD00327712 /* Licenta */,
+				3CD4B4B822280FDD00327712 /* TrustYourInstinct */,
 			);
 		};
 /* End PBXProject section */
@@ -280,6 +294,7 @@
 				DA9F5887228DA35100A79DA5 /* SquareCollectionViewCell.xib in Resources */,
 				3C89EAFD2230305400D5AE39 /* BullsEyeViewController.xib in Resources */,
 				3CD4B4D62228103400327712 /* AuthenticationViewController.xib in Resources */,
+				DA9AB0D522C69C1600A18788 /* FinalScreenViewController.xib in Resources */,
 				3CD4B4C422280FDF00327712 /* Assets.xcassets in Resources */,
 				3CB5D42322395CF9005E4130 /* LevelDifficultyView.xib in Resources */,
 				DA1E782D226F7853008A1CEA /* TimerViewController.xib in Resources */,
@@ -348,6 +363,7 @@
 				DA9F5886228DA35100A79DA5 /* SquareCollectionViewCell.swift in Sources */,
 				3CD4B4BF22280FDD00327712 /* ViewController.swift in Sources */,
 				3CD4B4D8222810C500327712 /* MainAppRouter.swift in Sources */,
+				DA9AB0D422C69C1600A18788 /* FinalScreenViewController.swift in Sources */,
 				3CB5D42522395D03005E4130 /* LevelDifficultyView.swift in Sources */,
 				DA9062762286E10600E05E64 /* Game.swift in Sources */,
 				3CB5D42922395D54005E4130 /* CustomView.swift in Sources */,
@@ -490,12 +506,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95VDGC3DY2;
-				INFOPLIST_FILE = Licenta/Info.plist;
+				INFOPLIST_FILE = TrustYourInstinct/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobiversal.Licenta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobiversal.TrustYourInstinct;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -511,12 +527,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95VDGC3DY2;
-				INFOPLIST_FILE = Licenta/Info.plist;
+				INFOPLIST_FILE = TrustYourInstinct/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobiversal.Licenta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobiversal.TrustYourInstinct;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -527,7 +543,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3CD4B4B422280FDD00327712 /* Build configuration list for PBXProject "Trust Your Instinct" */ = {
+		3CD4B4B422280FDD00327712 /* Build configuration list for PBXProject "TrustYourInstinct" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3CD4B4C922280FDF00327712 /* Debug */,
@@ -536,7 +552,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3CD4B4CB22280FDF00327712 /* Build configuration list for PBXNativeTarget "Licenta" */ = {
+		3CD4B4CB22280FDF00327712 /* Build configuration list for PBXNativeTarget "TrustYourInstinct" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3CD4B4CC22280FDF00327712 /* Debug */,
